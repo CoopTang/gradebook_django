@@ -1,0 +1,14 @@
+<table style="width:100%">
+  <tr>
+    <th>Student</th>
+    {% for test in tests %}
+      <th>{{ test.title }}</th>
+    {% endfor %}
+    {% for quiz in quizes %}
+      <th>{{ quiz.title }}</th>
+    {% endfor %}
+    {% for homework in homeworks %}
+      <th>{{ homework.title }}</th>
+    {% endfor %}
+  </tr>
+</table>
