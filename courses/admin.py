@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Course, Test, Quiz, Homework
+from .models import Course, Test, Quiz, Homework, Student
 
 class TestAdmin(admin.ModelAdmin):
   list_display = ['title', 'total_points']
@@ -23,6 +23,9 @@ class HomeworkAdmin(admin.ModelAdmin):
 class HomeworkInline(admin.TabularInline):
   model = Homework
 
+class StudentAdmin(admin.ModelAdmin):
+  model = Student
+
 class CourseAdmin(admin.ModelAdmin):
   model = Course
   inlines = [
@@ -35,3 +38,4 @@ admin.site.register(Course, CourseAdmin)
 admin.site.register(Test, TestAdmin)
 admin.site.register(Quiz, QuizAdmin)
 admin.site.register(Homework, HomeworkAdmin)
+admin.site.register(Student, StudentAdmin)
