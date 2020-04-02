@@ -25,7 +25,7 @@ class HomeworkInline(admin.TabularInline):
 
 class SectionAdmin(admin.ModelAdmin):
   list_display = ['section_id', 'course']
-  fields = ['section_id', 'course']
+  fields = ['section_id', 'course', 'students']
 
 class SectionInline(admin.TabularInline):
   model = Section
