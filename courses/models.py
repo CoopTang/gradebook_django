@@ -38,7 +38,7 @@ class Student(models.Model):
     return '%s, %s' % (self.last_name, self.first_name)
 
 class Section(models.Model):
-  section_id = models.CharField(max_length = 5, default = '001')
+  section_id = models.CharField(max_length = 5, default = '')
   course     = models.ForeignKey(Course, on_delete = models.CASCADE)
   students   = models.ManyToManyField(Student)
 
