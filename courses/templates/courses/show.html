@@ -1,0 +1,11 @@
+{% if course %}
+  <ul>
+    {% for section in course_sections %}
+      <li>
+        <a href="/courses/{{ course.id }}/section/{{ section.id }}">{{ section }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No Courses</p>
+{% endif %}
