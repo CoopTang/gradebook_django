@@ -3,29 +3,29 @@ from django.contrib import admin
 from .models import Course, Test, Quiz, Homework, Student, Section
 
 class TestAdmin(admin.ModelAdmin):
-  list_display = ['title', 'total_points']
+  list_display = ['title', 'total_points', 'course']
   fields = ['title', 'total_points', 'course']
 
 class TestInline(admin.TabularInline):
   model = Test
   
 class QuizAdmin(admin.ModelAdmin):
-  list_display = ['title', 'total_points']
+  list_display = ['title', 'total_points', 'course']
   fields = ['title', 'total_points', 'course']
 
 class QuizInline(admin.TabularInline):
   model = Quiz
 
 class HomeworkAdmin(admin.ModelAdmin):
-  list_display = ['title', 'total_points']
+  list_display = ['title', 'total_points', 'course']
   fields = ['title', 'total_points', 'course']
 
 class HomeworkInline(admin.TabularInline):
   model = Homework
 
 class SectionAdmin(admin.ModelAdmin):
-  list_display = ['section_id']
-  fields = ['section_id', 'course']
+  list_display = ['section_id', 'course']
+  fields = ['section_id', 'course', 'students']
 
 class SectionInline(admin.TabularInline):
   model = Section
