@@ -1,27 +1,60 @@
 from django.contrib import admin
 
-from .models import Course, Test, Quiz, Homework, Student, Section
+from .models import Course, Test, Quiz, Homework, Student, Section, TestStudent, QuizStudent, HomeworkStudent
+
+class TestInline(admin.TabularInline):
+  model = Test
+
+class TestStudentAdmin(admin.ModelAdmin):
+  list_display = ['student', 'test', 'score']
+  fields = ['student', 'test', 'score']
+  inlines = [
+    
+  ]
+
+class TestStudentInline(admin.TabularInline):
+  model = TestStudent
 
 class TestAdmin(admin.ModelAdmin):
   list_display = ['title', 'total_points', 'course']
   fields = ['title', 'total_points', 'course']
-
-class TestInline(admin.TabularInline):
-  model = Test
-  
-class QuizAdmin(admin.ModelAdmin):
-  list_display = ['title', 'total_points', 'course']
-  fields = ['title', 'total_points', 'course']
+  inlines = [
+    TestStudentInline
+  ]
 
 class QuizInline(admin.TabularInline):
   model = Quiz
 
-class HomeworkAdmin(admin.ModelAdmin):
+class QuizStudentAdmin(admin.ModelAdmin):
+  list_display = ['student', 'quiz', 'score']
+  fields = ['student', 'quiz', 'score']
+
+class QuizStudentInline(admin.TabularInline):
+  model = QuizStudent
+
+class QuizAdmin(admin.ModelAdmin):
   list_display = ['title', 'total_points', 'course']
   fields = ['title', 'total_points', 'course']
+  inlines = [
+    QuizStudentInline
+  ]
 
 class HomeworkInline(admin.TabularInline):
   model = Homework
+
+class HomeworkStudentAdmin(admin.ModelAdmin):
+  list_display = ['student', 'homework', 'score']
+  fields = ['student', 'homework', 'score']
+
+class HomeworkStudentInline(admin.TabularInline):
+  model = HomeworkStudent
+
+class HomeworkAdmin(admin.ModelAdmin):
+  list_display = ['title', 'total_points', 'course']
+  fields = ['title', 'total_points', 'course']
+  inlines = [
+    HomeworkStudentInline
+  ]
 
 class SectionAdmin(admin.ModelAdmin):
   list_display = ['section_id', 'course']
